@@ -52,22 +52,6 @@ const actionSX = {
   transform: 'none'
 };
 
-// sales report status
-// const status = [
-//   {
-//     value: 'today',
-//     label: 'Today'
-//   },
-//   {
-//     value: 'month',
-//     label: 'This Month'
-//   },
-//   {
-//     value: 'year',
-//     label: 'This Year'
-//   }
-// ];
-
 // ==============================|| DASHBOARD - DEFAULT ||============================== //
 
 const DashboardDefault = () => {

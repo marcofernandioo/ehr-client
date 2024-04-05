@@ -2,6 +2,8 @@
 /* eslint-disable no-unused-vars */
 import react from 'react';
 
+import { getMedicalRecords } from 'api/index';
+
 // material-ui
 import {
     Avatar,
@@ -23,26 +25,11 @@ import {
 import MedicalRecordTable from './MedicalRecordTable';
 import MainCard from 'components/MainCard';
 
-const APIgetMedicalRecords = async () => {
-    try {
-        const response = await fetch(`http://localhost:8000/get/medical-record`);
-        if (!response.ok) {
-            alert("Please Try Again.")
-            console.log(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    } catch (e) {
-        alert("Please Try Again.")
-        console.error('Error User Login:', e.message);
-        throw e;
-    }
-}
-
 const ViewMedicalRecord = () => {
     const [medicalRecords, setMedicalRecords] = react.useState([]);
 
     react.useEffect(() => {
-        APIgetMedicalRecords()
+        getMedicalRecords()
         .then((res) => {
             console.log(res);
             setMedicalRecords(res.medicalRecordList);

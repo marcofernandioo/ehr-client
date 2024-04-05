@@ -4,15 +4,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// material-ui
-// import { Grid, Stack, Typography } from '@mui/material';
 
 // project import
 
 import AuthWrapper from './AuthWrapper';
-
-// import { useEffect, useState } from 'react';
-// import { Link as RouterLink } from 'react-router-dom';
 
 // material-ui
 import {
@@ -83,8 +78,6 @@ const Login = () => {
   };
 
   const onSubmit = () => {
-    // console.log(btoa(data.privateKey));
-    // console.log(atob(btoa(data.privateKey)))
     console.log(privateKey);
     const data = {
       username,

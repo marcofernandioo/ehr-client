@@ -5,6 +5,8 @@ import react from 'react';
 import OrderTable from './OrdersTable';
 import MainCard from 'components/MainCard';
 
+import { getBlockchain, mineTransactions } from 'api/index';
+
 
 // material-ui
 import {
@@ -24,41 +26,10 @@ import {
     Typography,
 } from '@mui/material';
 
-const APIgetBlockchain = async () => {
-    try {
-        const response = await fetch(`http://localhost:8000/get/blockchain`);
-        if (!response.ok) {
-            alert("Please Try Again.")
-            console.log(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    } catch (e) {
-        alert("Please Try Again.")
-        console.error('Error User Login:', e.message);
-        throw e;
-    }
-};
-
-const APImineTransactions = async () => {
-    try {
-        const res = await fetch(`http://localhost:8000/mine`);
-        if (!res.ok) {
-            alert("Please Try Again.")
-            console.log(`HTTP error! Status: ${res.status}`);
-        }
-        return res.json();
-    } catch (e) {
-        alert("Please Try Again.")
-        console.error('Error User Login:', e.message);
-        throw e;
-    }
-}
-
-
 const PendingTransactions = () => {
     const [pendingTransactions, setPendingTransactions] = react.useState([]);
     react.useEffect(() => {
-        APIgetBlockchain()
+        getBlockchain()
             .then((res) => {
                 setPendingTransactions(res.data.pendingTransactions);
                 console.log(res);
@@ -73,7 +44,7 @@ const PendingTransactions = () => {
             alert("Can't mine; no pending transactions");
             return
         }
-        APImineTransactions()
+        mineTransactions()
             .then((res) => {
                 alert("Block is Mined!")
                 console.log(res.data);

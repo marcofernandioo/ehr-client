@@ -2,6 +2,8 @@
 /* eslint-disable no-unused-vars */
 import react from 'react';
 
+import { submitMedicalRecord } from 'api/index';
+
 // material-ui
 import {
     Avatar,
@@ -25,33 +27,20 @@ import {
 
 import AnimateButton from 'components/@extended/AnimateButton';
 
-const APIsubmitMedicalRecord = async (data) => {
-    try {
-        const response = await fetch(`http://localhost:8000/create/transaction`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        });
-    
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-    
-        return await response.json();
-      } catch (error) {
-        console.error('Error Submitting Medical Record:', error.message);
-        throw error;
-      }
-}
-
 const CreateMedicalRecord = () => {
     const [medicalRecord, setMedicalRecord] = react.useState([]);
+    const [publicKey, setPublicKey] = react.useState([]);
+    const [privateKey, setPrivateKey] = react.useState([]);
 
     const onSubmitMedicalRecord = () => {
-        console.log(medicalRecord);
-        APIsubmitMedicalRecord(medicalRecord)
+        // console.log(medicalRecord);
+        const data = {
+            publicKey:  publicKey.replace(/\n/g, '\\n'),
+            ...medicalRecord,
+            privateKey:  privateKey.replace(/\n/g, '\\n')
+        }
+        console.log(data);
+        submitMedicalRecord(data)
         .then((res) => {
             console.log(res);
             alert('Medical Record Submitted!')
@@ -86,10 +75,10 @@ const CreateMedicalRecord = () => {
                                 <OutlinedInput
                                     fullWidth
                                     id="company-signup"
-                                    value={medicalRecord.publicKey}
+                                    value={publicKey}
                                     name="publicKey"
                                     // onChange={}
-                                    onChange={onChangeMedicalRecord}
+                                    onChange={(e) => setPublicKey(e.target.value)}
                                     inputProps={{}}
                                 />
                             </Stack>
@@ -154,9 +143,9 @@ const CreateMedicalRecord = () => {
                                     fullWidth
                                     // multiline
                                     id="password-signup"
-                                    value={medicalRecord.privateKey}
+                                    value={privateKey}
                                     name="privateKey"
-                                    onChange={onChangeMedicalRecord}
+                                    onChange={(e) => setPrivateKey(e.target.value)}
                                     inputProps={{}}
                                 />
                             </Stack>

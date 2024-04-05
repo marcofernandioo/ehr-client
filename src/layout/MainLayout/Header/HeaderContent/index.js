@@ -4,9 +4,9 @@ import { GithubOutlined } from '@ant-design/icons';
 
 // project import
 import Search from './Search';
-import Profile from './Profile';
-import Notification from './Notification';
-import MobileSection from './MobileSection';
+// import Profile from './Profile';
+// import Notification from './Notification';
+// import MobileSection from './MobileSection';
 
 // ==============================|| HEADER - CONTENT ||============================== //
 
@@ -20,7 +20,7 @@ const HeaderContent = () => {
 
       <IconButton
         component={Link}
-        href="https://github.com/codedthemes/mantis-free-react-admin-template"
+        href="https://github.com/marcofernandioo/progenitor-ehr"
         target="_blank"
         disableRipple
         color="secondary"
@@ -29,10 +29,6 @@ const HeaderContent = () => {
       >
         <GithubOutlined />
       </IconButton>
-
-      <Notification />
-      {!matchesXs && <Profile />}
-      {matchesXs && <MobileSection />}
     </>
   );
 };

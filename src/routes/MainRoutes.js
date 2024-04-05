@@ -8,12 +8,6 @@ import CreateMedicalRecord from 'pages/dashboard/CreateMedicalRecord';
 import ViewMedicalRecord from 'pages/dashboard/ViewMedicalRecord';
 import Dashboard from 'pages/dashboard';
 
-// render - dashboard
-// const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
-// const PendingDefault = Loadable(lazy(() => import('pages/dashboard/PendingTransactions')));
-// const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
-// const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
-
 // render - sample page
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/SamplePage')));
 
@@ -42,19 +36,15 @@ const MainRoutes = {
       children: [
         {
           path: 'default',
-          element: <Dashboard />
-        },
-        {
-          path: 'create',
           element: <CreateMedicalRecord />
-        },
-        {
-          path: 'view',
-          element: <ViewMedicalRecord />
         },
         {
           path: 'pending',
           element: <PendingTransactions />
+        },
+        {
+          path: 'view',
+          element: <ViewMedicalRecord />
         }
       ]
     },

@@ -13,19 +13,19 @@ const dashboard = {
   title: 'Navigation',
   type: 'group',
   children: [
-    {
-      id: 'dashboard',
-      title: 'Dashboard',
-      type: 'item',
-      url: '/dashboard/default',
-      icon: icons.DashboardOutlined,
-      breadcrumbs: false
-    },
+    // {
+    //   id: 'dashboard',
+    //   title: 'Dashboard',
+    //   type: 'item',
+    //   url: '/dashboard/default',
+    //   icon: icons.DashboardOutlined,
+    //   breadcrumbs: false
+    // },
     {
       id: 'create-medical-record',
       title: 'Create Medical Record',
       type: 'item',
-      url: '/dashboard/create',
+      url: '/dashboard/default',
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     },
